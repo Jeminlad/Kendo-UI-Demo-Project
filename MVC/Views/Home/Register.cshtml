@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<div id="validation-success"></div>
+<div class="container mt-5" style="border: 1px solid #ccc; width: 70%; padding: 20px;">
+    <h3>Register</h3>
+    <form id="registerform">
+        <fieldset></fieldset>
+    </form>
+</div>
+
+<!-- Load jQuery and Kendo UI -->
+<link href="https://kendo.cdn.telerik.com/2024.1.115/styles/kendo.default-v2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2024.1.115/js/kendo.all.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        const validationSuccess = $("#validation-success");
+        $("#registerform").kendoForm({
+            validatable: {
+                validateOnBlur: true,
+                validationSummary: false,
+                errorTemplate: "<span class='k-form-error'>#:message#</span>"
+            },
+            items: [
+                { field: "Name", label: "Name:", validation: { required: { message: "Please enter your name." } } },
+                {
+                    field: "Email",
+                    label: "Email:",
+                    validation: {
+                        required: { message: "Please enter your email." },
+                        email: { message: "Please enter a valid email address" }
+                    }
+                },
+                {
+                    field: "Password",
+                    label: "Password:",
+                    validation: { required: { message: "Please enter your password." } },
+                    editor: function (container, options) {
+                        $('<input type="password" id="Password" name="' + options.field + '" required />')
+                            .appendTo(container)
+                            .kendoTextBox();
+                    }
+                },
+                {
+                    field: "ConfirmPassword",
+                    label: "Confirm Password:",
+                    validation: { required: { message: "Please confirm your password." } },
+                    editor: function (container, options) {
+                        $('<input type="password" id="ConfirmPassword" name="' + options.field + '" required />')
+                            .appendTo(container)
+                            .kendoTextBox();
+                    }
+                },
+                { field: "Address", label: "Address:" },
+                { field: "Mobile", label: "Mobile:" },
+                {
+                    field: "Gender",
+                    label: "Gender:",
+                    validation: { required: { message: "Please select your gender." } },
+                    editor: function (container, options) {
+                        const genderOptions = [
+                            { value: "Male", label: "Male" },
+                            { value: "Female", label: "Female" },
+                            { value: "Other", label: "Other" }
+                        ];
+                        const radioGroup = $('<div class="k-radio-group"></div>').appendTo(container);
+                        genderOptions.forEach(option => {
+                            $('<input type="radio" name="' + options.field + '" value="' + option.value + '" required />')
+                                .appendTo(radioGroup);
+                            $('<label class="k-radio-label">' + option.label + '</label>')
+                                .appendTo(radioGroup);
+                        });
+                    }
+                },
+                {
+                    field: "image",
+                    label: "Image:",
+                    validation: { required: { message: "Please select an image." } },
+                    editor: function (container, options) {
+                        $('<input type="file" id="image" name="' + options.field + '" />')
+                            .appendTo(container)
+                            .kendoUpload({ multiple: false });
+                    }
+                }
+            ],
+            buttonsTemplate: '<button type="submit" class="k-button k-button-lg k-button-solid-success">Register</button> <button type="reset" class="k-button k-button-lg k-button-solid-base">Clear</button>',
+            validateField: function (e) {
+                validationSuccess.html("");
+            },
+            submit: function (e) {
+                e.preventDefault();
+                const RegisterData = new FormData();
+                RegisterData.append("c_Username", e.model.Name);
+                RegisterData.append("c_Email", e.model.Email);
+                RegisterData.append("c_Password", e.model.Password);
+                RegisterData.append("c_ConfirmPassword", e.model.ConfirmPassword);
+                RegisterData.append("c_Address", e.model.Address);
+                RegisterData.append("c_Mobile", e.model.Mobile);
+                RegisterData.append("c_Gender", e.model.Gender);
+                const imageFile = $("input[name=image]")[0].files[0];
+                if (imageFile) {
+                    RegisterData.append("ProfilePicture", imageFile);
+                }
+                $.ajax({
+                    url: "/Home/Register",
+                    method: "post",
+                    contentType: false,
+                    processData: false,
+                    data: RegisterData,
+                    success: function (result) {
+                        validationSuccess.html("<div class='k-messagebox k-messagebox-success'><p>" + result.message + "</p></div>");
+                    },
+                    error: function (xhr) {
+                        let errors;
+                        try {
+                            errors = JSON.parse(xhr.responseText);
+                        } catch (e) {
+                            errors = { message: "An unknown error occurred." };
+                        }
+                        validationSuccess.html("<div class='k-messagebox k-messagebox-error'><p>" + (errors.c_Password ?? "") + "</p><p>" + (errors.c_ConfirmPassword ?? "") + "</p></div>");
+                    }
+                });
+            },
+            clear: function () {
+                validationSuccess.html("");
+            }
+        });
+    });
+</script>

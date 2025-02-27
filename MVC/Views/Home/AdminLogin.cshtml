@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div id="validation-success"></div>
+<div class="container mt-5" style="border: 1px solid #ccc; width: 70%;padding:20px">
+    <h3>Admin Login</h3>
+    <form id="loginform"></form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2023.1.117/js/kendo.all.min.js"></script> <!-- Ensure Kendo UI is loaded -->
+
+<script>
+    $(document).ready(function () {
+        const validationSuccess = $("#validation-success");
+
+        $("#loginform").kendoForm({
+            validatable: {
+                validateOnBlur: true,
+                validationSummary: false,
+                errorTemplate: "<span class='k-form-error'>#:message#</span>"
+            },
+            items: [
+                {
+                    field: "Email",
+                    label: "Email Address:",
+                    validation: {
+                        required: { message: "Please enter your email address." },
+                        email: { message: "Please enter a valid email address." }
+                    }
+                },
+                {
+                    field: "Password",
+                    label: "Password:",
+                    validation: { required: { message: "Please enter your password." } },
+                    editor: function (container, options) {
+                        $('<input type="password" name="' + options.field + '" required />')
+                            .appendTo(container)
+                            .kendoTextBox();
+                    }
+                }
+            ],
+            buttonsTemplate: '<button type="submit" class="k-button k-button-lg k-button-solid-success">Login</button> ' +
+                '<button type="reset" class="k-button k-button-lg k-button-solid-base">Clear</button>',
+            validateField: function (e) {
+                validationSuccess.html("");
+            },
+            submit: function (e) {
+                e.preventDefault();
+
+                const LoginData = new FormData();
+                LoginData.append("c_Email", e.model.Email);
+                LoginData.append("c_Password", e.model.Password);
+
+                $.ajax({
+                    url: "/Home/AdminLogin",
+                    method: "POST",
+                    contentType: false,
+                    processData: false,
+                    data: LoginData,
+                    success: function (result) {
+                        if (result.success) {
+                            window.location.href = "../Admin/Index";
+                        } else {
+                            validationSuccess.html("<div class='k-messagebox k-messagebox-error'><p>" + result.message + "</p></div>");
+                        }
+                    },
+                    error: function (xhr) {
+                        try {
+                            var errors = JSON.parse(xhr.responseText);
+                            validationSuccess.html("<div class='k-messagebox k-messagebox-error'><p>" +
+                                (errors.c_Email || "Invalid Email") + "</p><p>" +
+                                (errors.c_Password || "Invalid Password") + "</p></div>");
+                        } catch (e) {
+                            validationSuccess.html("<div class='k-messagebox k-messagebox-error'><p>Unknown error occurred.</p></div>");
+                        }
+                    }
+                });
+            },
+            clear: function () {
+                validationSuccess.html("");
+            }
+        });
+    });
+</script>
