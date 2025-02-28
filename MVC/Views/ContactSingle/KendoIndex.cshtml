@@ -1,8 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Contacts";
     @* Layout = "../Shared/_ContactSingleLayout.cshtml"; *@
-    Layout="/Views/Shared/_Welcome.cshtml";
-
+    Layout="../Shared/_Welcome.cshtml";
 }
 <div class="container mt-4">
     <h3>Contacts</h3>
@@ -90,7 +89,7 @@
                 } else {
                     console.error("Kendo Form not initialized properly.");
                 }
-                openModal(); 
+                openModal();
             },
             error: function (xhr, status, error) {
                 console.error("Edit Form Error:", xhr.responseText);
@@ -236,7 +235,7 @@
                     columns: [
                         {
                             title: "Edit",
-                            template: <button class='k-button k-button-solid-info' onclick='editForm(#=c_ContactId#)'>&hellip;</button>,
+                            template: `<button class='k-button k-button-solid-info' onclick='editForm(#=c_ContactId#)'>&hellip;</button>`,
                             width: 50
                         },
                         { field: "c_ContactName", title: "Name", width: "150px" },

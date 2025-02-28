@@ -40,6 +40,8 @@ namespace MVC.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        [HttpGet]
         public async Task<ActionResult> List()
         {
             List<t_Contact> contacts = await

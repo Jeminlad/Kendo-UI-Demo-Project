@@ -5,6 +5,38 @@
       "PackagePath": "staticwebassets\\MVC.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\contact_images\\d@gmail.com.png",
+      "PackagePath": "staticwebassets\\contact_images\\d@gmail.com.png"
+    },
+    {
+      "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\contact_images\\jeminlad2003@gmail.com.jpg",
+      "PackagePath": "staticwebassets\\contact_images\\jeminlad2003@gmail.com.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\contact_images\\pqr@gmail.com.png",
+      "PackagePath": "staticwebassets\\contact_images\\pqr@gmail.com.png"
+    },
+    {
+      "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\contact_images\\test1@gamil.com.png",
+      "PackagePath": "staticwebassets\\contact_images\\test1@gamil.com.png"
+    },
+    {
+      "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\contact_images\\test3@gamil.com.png",
+      "PackagePath": "staticwebassets\\contact_images\\test3@gamil.com.png"
+    },
+    {
+      "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\contact_images\\test5@gamil.com.png",
+      "PackagePath": "staticwebassets\\contact_images\\test5@gamil.com.png"
+    },
+    {
+      "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\contact_images\\test@gamil.com.jpg",
+      "PackagePath": "staticwebassets\\contact_images\\test@gamil.com.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\contact_images\\test@gamil.com.png",
+      "PackagePath": "staticwebassets\\contact_images\\test@gamil.com.png"
+    },
+    {
       "Id": "C:\\Users\\Mayur\\Desktop\\Casepoint\\Practicals\\Kendo UI\\Kendo-Demo\\MVC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
