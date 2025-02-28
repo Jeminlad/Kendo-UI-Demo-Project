@@ -48,6 +48,7 @@ namespace MVC.Controllers
             _contactRepo.GetAllByUser(HttpContext.Session.GetInt32("UserId").ToString());
             return Json(contacts);
         }
+
         public async Task<ActionResult> Logout()
         {
             HttpContext.Session.Clear();
@@ -60,6 +61,7 @@ namespace MVC.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
         public async Task<IActionResult> GetContactById(string id)
         {
             var contact = await _contactRepo.GetOne(id);
@@ -67,6 +69,7 @@ namespace MVC.Controllers
                 return BadRequest(new { success = false, message = "There was no contact found" });
             return Ok(contact);
         }
+
         [HttpPost]
         public async Task<ActionResult> Create(t_Contact contact)
         {
@@ -132,6 +135,7 @@ namespace MVC.Controllers
                 return BadRequest(new { success = false, message = "There was some error while adding the contact" });
             }
         }
+        
         public IActionResult Error()
         {
             return View("Error!");
