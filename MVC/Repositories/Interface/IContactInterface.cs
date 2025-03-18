@@ -21,10 +21,7 @@ public interface IContactInterface
     List<t_Contact> Create();
     t_Contact GetOne(int id);
     void Insert(t_Contact data);
-
-    //void Update(t_Contact data);
     void Delete(t_Contact data);
-
     Task<List<vm_Contact>> GetAllWithUserName();
 
     #endregion

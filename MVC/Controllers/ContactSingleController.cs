@@ -10,7 +10,6 @@ using MVC.Models;
 
 namespace MVC.Controllers
 {
-    // [Route("[controller]")]
     public class ContactSingleController : Controller
     {
         private readonly IContactInterface _contactRepo;
@@ -128,7 +127,7 @@ namespace MVC.Controllers
             int status = await _contactRepo.Delete(id);
             if (status == 1)
             {
-                return Ok(new { success = true, message = "contact Insterted Successfully!!!!!" });
+                return Ok(new { success = true, message = "contact Deleted Successfully!!!!!" });
             }
             else
             {
