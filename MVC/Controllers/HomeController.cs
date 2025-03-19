@@ -13,10 +13,6 @@ public class HomeController : Controller
     {
         _userRepo = userRepo;
     }
-    public IActionResult Index()
-    {
-        return View();
-    }
 
     #region Login Method
     public IActionResult Login()
@@ -105,31 +101,4 @@ public class HomeController : Controller
     }
     #endregion
 
-
-    #region Admin Login Method
-    public IActionResult AdminLogin()
-    {
-        return View();
-    }
-    [HttpPost]
-    public async Task<IActionResult> AdminLogin(vm_Login login)
-    {
-        if (ModelState.IsValid)
-        {
-            if (login.c_Email == "admin@admin" && login.c_Password == "P@ssw0rd")
-            {
-                HttpContext.Session.SetInt32("UserId", 0);
-                return new JsonResult(new { success = true });
-            }
-            else
-            {
-                return new JsonResult(new { success = false, message = "Username or password incorrect" });
-            }
-        }
-        else
-        {
-            return BadRequest(ModelState); // Return validation errors
-        }
-    }
-    #endregion
 }

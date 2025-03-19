@@ -18,10 +18,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Mayur\Desktop\Casepoint\Practicals\Kendo UI\Kendo-Demo (For Test Purpose)\Kendo-Demo\MVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Mayur/Desktop/Casepoint/Practicals/Kendo UI/Kendo-Demo (For Test Purpose)/Kendo-Demo/MVC/Views/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Mayur/Desktop/Casepoint/Practicals/Kendo UI/Kendo-Demo (For Test Purpose)/Kendo-Demo/MVC/Views/ContactSingle/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFNpbmdsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,24 +26,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFNpbmdsZVxLZW5kb0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mayur/Desktop/Casepoint/Practicals/Kendo UI/Kendo-Demo (For Test Purpose)/Kendo-Demo/MVC/Views/Home/AdminLogin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkxvZ2luLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mayur/Desktop/Casepoint/Practicals/Kendo UI/Kendo-Demo (For Test Purpose)/Kendo-Demo/MVC/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Mayur/Desktop/Casepoint/Practicals/Kendo UI/Kendo-Demo (For Test Purpose)/Kendo-Demo/MVC/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mayur/Desktop/Casepoint/Practicals/Kendo UI/Kendo-Demo (For Test Purpose)/Kendo-Demo/MVC/Views/Home/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mayur/Desktop/Casepoint/Practicals/Kendo UI/Kendo-Demo (For Test Purpose)/Kendo-Demo/MVC/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mayur/Desktop/Casepoint/Practicals/Kendo UI/Kendo-Demo (For Test Purpose)/Kendo-Demo/MVC/Views/Home/Register.cshtml]

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using KendoDemo.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
@@ -134,7 +135,7 @@ namespace MVC.Controllers
                 return BadRequest(new { success = false, message = "There was some error while adding the contact" });
             }
         }
-        
+
         public IActionResult Error()
         {
             return View("Error!");
