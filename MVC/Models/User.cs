@@ -9,17 +9,21 @@ public class t_User
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int c_UserId { get; set; }
 
+
     [Required(ErrorMessage = "Username is required.")]
     [StringLength(100)]
     public string c_UserName { get; set; }
+
 
     [Required(ErrorMessage = "Email is required.")]
     [StringLength(100)]
     public string c_Email { get; set; }
 
+
     [Required(ErrorMessage = "Password is required.")]
     [StringLength(100)]
     public string c_Password { get; set; }
+
 
     [StringLength(100)]
     [Required(ErrorMessage = "Confirm password is Required!")]

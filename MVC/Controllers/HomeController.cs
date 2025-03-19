@@ -42,11 +42,16 @@ public class HomeController : Controller
     #endregion
 
 
+
+
+
+
     #region Register Method
     public IActionResult Register()
     {
         return View();
     }
+
     [HttpPost]
     public async Task<IActionResult> Register(t_User user)
     {
@@ -56,14 +61,14 @@ public class HomeController : Controller
             {
                 var fileName = user.c_Email + Path.GetExtension(user.ProfilePicture.FileName);
                 var filePath = Path.Combine("../MVC/wwwroot/profile_images", fileName);
-                Directory.CreateDirectory(Path.Combine("../MVC/wwwroot/profile_images"));
-                user.c_Image = fileName;
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    user.ProfilePicture.CopyTo(stream);
-                }
+                // Directory.CreateDirectory(Path.Combine("../MVC/wwwroot/profile_images"));
+                // user.c_Image = fileName;
+                // using (var stream = new FileStream(filePath, FileMode.Create))
+                // {
+                //     user.ProfilePicture.CopyTo(stream);
+                // }
             }
-            Console.WriteLine("user.c_fname: " + user.c_UserName);
+            // Console.WriteLine("user.c_fname: " + user.c_UserName);
             var status = await _userRepo.Register(user);
             if (status == 1)
             {
@@ -86,19 +91,23 @@ public class HomeController : Controller
     #endregion
 
 
+
+
+
+
     #region Logout Method
     public async Task<ActionResult> Logout()
     {
         HttpContext.Session.Clear();
         if (HttpContext.Session.GetInt32("UserId") != null)
         {
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("KendoIndex", "ContactSingle");
         }
         else
         {
             return RedirectToAction("Login", "Home");
         }
     }
-    #endregion
 
+    #endregion
 }

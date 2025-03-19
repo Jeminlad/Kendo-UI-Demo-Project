@@ -9,9 +9,11 @@ public class t_Contact
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int c_ContactId { get; set; }
 
+    [Required]
     public int c_UserId { get; set; }
-    [StringLength(100)]
 
+
+    [StringLength(100)]
     public string c_ContactName { get; set; }
 
 

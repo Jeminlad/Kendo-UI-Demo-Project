@@ -18,17 +18,7 @@ namespace MVC.Controllers
         {
             _contactRepo = contactRepo;
         }
-        public async Task<ActionResult> Index()
-        {
-            if (HttpContext.Session.GetInt32("UserId") != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
+
         public async Task<ActionResult> KendoIndex()
         {
             if (HttpContext.Session.GetInt32("UserId") != null)
@@ -37,7 +27,7 @@ namespace MVC.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Home");
             }
         }
 
@@ -54,11 +44,11 @@ namespace MVC.Controllers
             HttpContext.Session.Clear();
             if (HttpContext.Session.GetInt32("UserId") != null)
             {
-                return RedirectToAction("Index", "Contact");
+                return RedirectToAction("Index", "ContactSingle");
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Home");
             }
         }
 
@@ -81,13 +71,13 @@ namespace MVC.Controllers
                     {
                         var fileName = contact.c_Email + Path.GetExtension(contact.ContactPicture.FileName);
                         var filePath = Path.Combine("../MVC/wwwroot/contact_images", fileName);
-                        Directory.CreateDirectory(Path.Combine("../MVC/wwwroot/contact_images"));
-                        contact.c_Image = fileName;
-                        System.IO.File.Delete(filePath);
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            contact.ContactPicture.CopyTo(stream);
-                        }
+                        // Directory.CreateDirectory(Path.Combine("../MVC/wwwroot/contact_images"));
+                        // contact.c_Image = fileName;
+                        // System.IO.File.Delete(filePath);
+                        // using (var stream = new FileStream(filePath, FileMode.Create))
+                        // {
+                        //     contact.ContactPicture.CopyTo(stream);
+                        // }
                     }
                     contact.c_UserId = (int)HttpContext.Session.GetInt32("UserId");
                     var result = 0;
@@ -95,11 +85,11 @@ namespace MVC.Controllers
                     {
                         result = await _contactRepo.Add(contact);
                     }
-
                     else
                     {
                         result = await _contactRepo.Update(contact);
                     }
+
                     if (result == 0)
                     {
                         return BadRequest(new { success = false, message = "There was some error while adding the contact" });
@@ -114,8 +104,7 @@ namespace MVC.Controllers
                     return BadRequest(new { success = false, message = "There was some error while adding the contact" });
                 }
             }
-            var errors = ModelState.Where(e => e.Value.Errors.Count > 0)
-            .ToDictionary(
+            var errors = ModelState.Where(e => e.Value.Errors.Count > 0).ToDictionary(
             kvp => kvp.Key,
             kvp => kvp.Value.Errors.Select(err => err.ErrorMessage).ToArray()
             );

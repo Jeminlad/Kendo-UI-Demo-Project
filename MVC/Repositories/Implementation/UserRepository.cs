@@ -8,16 +8,13 @@ namespace KendoDemo.Repositories.Implementation
     public class UserRepository : IUserInterface
     {
         private readonly NpgsqlConnection _conn;
-
         public UserRepository(NpgsqlConnection conn)
         {
             _conn = conn;
         }
 
-
         public async Task<int> Register(t_User data)
         {
-            //Taking status varible to get different status of registration 
             int status = 0;
             try
             {
@@ -41,7 +38,7 @@ namespace KendoDemo.Repositories.Implementation
 t_User(c_username,c_email,c_password,c_address,c_gender,c_mobile,c_image) VALUES 
 (@c_userName,@c_email,@c_password,@c_address,@c_gender,@c_mobile,@c_image)", _conn);
                         com.Parameters.AddWithValue("@c_userName", data.c_UserName);
-                         com.Parameters.AddWithValue("@c_email", data.c_Email);
+                        com.Parameters.AddWithValue("@c_email", data.c_Email);
                         com.Parameters.AddWithValue("@c_password", data.c_Password);
                         com.Parameters.AddWithValue("@c_address", data.c_Address);
                         com.Parameters.AddWithValue("@c_gender", data.c_Gender);
@@ -57,10 +54,10 @@ t_User(c_username,c_email,c_password,c_address,c_gender,c_mobile,c_image) VALUES
             catch (Exception e)
             {
                 await _conn.CloseAsync();
-                Console.WriteLine("Register Failed , Error :- " + e.Message); 
+                Console.WriteLine("Register Failed , Error :- " + e.Message);
                 return -1; //-1 if There is error during registration 
             }
-        }  
+        }
 
         public async Task<t_User> Login(vm_Login user)
         {

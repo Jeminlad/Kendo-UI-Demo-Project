@@ -1,5 +1,4 @@
 using System.Data;
-using KendoDemo;
 using KendoDemo.Repositories.Interface;
 using MVC.Models;
 using Npgsql;
@@ -9,7 +8,6 @@ namespace KendoDemo.Repositories.Implementation;
 
 public class CotactRepository : IContactInterface
 {
-
     private readonly NpgsqlConnection _conn;
 
     public CotactRepository(NpgsqlConnection conn)
@@ -49,7 +47,6 @@ public class CotactRepository : IContactInterface
         throw new NotImplementedException();
     }
 
-
     public async Task<int> Delete(string contactid)
     {
         try
@@ -86,7 +83,6 @@ public class CotactRepository : IContactInterface
         if (datar.HasRows)
         {
             dt.Load(datar);
-
         }
         List<t_Contact> contactList = new List<t_Contact>();
         contactList = (from DataRow dr in dt.Rows
@@ -148,7 +144,7 @@ public class CotactRepository : IContactInterface
         t_Contact contact = null;
         if (dr.Read())
         {
-            Console.WriteLine("@@@@@@@@" + dr["c_email"]);
+            // Console.WriteLine("@@@@@@@@" + dr["c_email"]);
             contact = new t_Contact()
             {
                 c_ContactId = Convert.ToInt32(dr["c_contactid"]),
@@ -201,19 +197,17 @@ public class CotactRepository : IContactInterface
                 cmd.Parameters.AddWithValue("@c_image", contactData.c_Image ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@c_status", contactData.c_Status);
                 cmd.Parameters.AddWithValue("@c_group", contactData.c_Group);
-                cmd.Parameters.AddWithValue("@c_contactid", contactData.c_ContactId);  // 🔹 Missing Parameter Added!
+                cmd.Parameters.AddWithValue("@c_contactid", contactData.c_ContactId);
 
-                _conn.Open();  // 🔹 Open connection before executing command
-                // int rowsAffected = 
+                _conn.Open();
                 cmd.ExecuteNonQuery();
                 _conn.Close();
                 return 1;
-                //return rowsAffected > 0 ? 1 : 0;  // 🔹 Return 1 if update is successful, 0 otherwise
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Error updating contact: " + ex.Message);  // 🔹 Log error message for debugging
+            // Console.WriteLine("Error updating contact: " + ex.Message);
             return 0;
         }
     }
@@ -247,6 +241,5 @@ public class CotactRepository : IContactInterface
         _conn.Close();
         return contactList;
     }
-
 }
 
