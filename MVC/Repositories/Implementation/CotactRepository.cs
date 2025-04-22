@@ -97,7 +97,6 @@ public class CotactRepository : IContactInterface
                            c_Image = dr["c_image"].ToString(),
                            c_Group = dr["c_group"].ToString(),
                            c_Status = dr["c_status"].ToString()
-
                        }).ToList();
         _conn.Close();
         return contactList;
@@ -144,7 +143,6 @@ public class CotactRepository : IContactInterface
         t_Contact contact = null;
         if (dr.Read())
         {
-            // Console.WriteLine("@@@@@@@@" + dr["c_email"]);
             contact = new t_Contact()
             {
                 c_ContactId = Convert.ToInt32(dr["c_contactid"]),
@@ -207,7 +205,6 @@ public class CotactRepository : IContactInterface
         }
         catch (Exception ex)
         {
-            // Console.WriteLine("Error updating contact: " + ex.Message);
             return 0;
         }
     }

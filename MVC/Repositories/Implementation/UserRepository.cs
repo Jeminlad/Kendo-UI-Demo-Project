@@ -28,7 +28,7 @@ namespace KendoDemo.Repositories.Implementation
                     if (datadr.HasRows)
                     {
                         await _conn.CloseAsync();
-                        return 0; //Returning 0 if user exists 
+                        return 0; //Returning 0 if user exists
                     }
                     else
                     {
@@ -91,7 +91,6 @@ t_User(c_username,c_email,c_password,c_address,c_gender,c_mobile,c_image) VALUES
             {
                 await _conn.CloseAsync();
             }
-
             return UserData;
         }
     }
