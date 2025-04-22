@@ -94,16 +94,5 @@ t_User(c_username,c_email,c_password,c_address,c_gender,c_mobile,c_image) VALUES
 
             return UserData;
         }
-
-        public object GetUserProfile(string? userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool UpdateUserProfile(t_Contact model)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

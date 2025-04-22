@@ -23,6 +23,6 @@ public interface IContactInterface
     void Insert(t_Contact data);
     void Delete(t_Contact data);
     Task<List<vm_Contact>> GetAllWithUserName();
-    
+
     #endregion
 }
